@@ -1,0 +1,192 @@
+{% extends "clasificacion/layout.html" %}
+{% block body %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <h1 class="h2">Clasificación especificando hashtags</h1>
+</div>
+<br>
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col">
+            <label for="cantidad">Escriba un Hashtag</label>
+            <input type="text" class="form-control" placeholder="#Hashtag" required>
+            <small class="form-text text-muted">
+                Ejemplo: #Covid_19ec · #GuayaquilSOS · #COVID19Ecuador
+            </small>
+        </div>
+        <div class="col">
+            <label for="cantidad">Cantidad de tweets a analizar</label>
+            <select id="cantidad" class="form-control" name="cantidad">
+                <option selected value="5">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col"> <label>Desde</label></div>
+        <div class="col"><label>Hasta</label></div>
+    </div>
+    <div class="row">
+        <!-- Desde-->
+        <div class="form-group col-md-2">
+            <label for="mes" class="mini"><small>Mes</small></label>
+            <select id="mes" class="form-control">
+                <option value="enero">enero</option>
+                <option value="febrero">febrero</option>
+                <option selected value="marzo">marzo</option>
+                <option value="abril">abril</option>
+                <option value="mayo">mayo</option>
+                <option value="junio">junio</option>
+                <option value="julio">julio</option>
+                <option value="agosto">agosto</option>
+                <option value="septiembre">septiembre</option>
+                <option value="octubre">octubre</option>
+                <option value="noviembre">noviembre</option>
+                <option value="diciembre">diciembre</option>
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="dia" class="mini"><small>Día</small></label>
+            <select id="dia" class="form-control">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="anio" class="mini"><small>Año</small></label>
+            <select id="anio" class="form-control">
+                <option value="2021">2021</option>
+                <option selected value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+            </select>
+        </div>
+        <!-- Hasta-->
+        <div class="form-group col-md-2">
+            <label for="Mes" class="mini"><small>Mes</small></label>
+            <select id="mes" class="form-control">
+                <option value="enero">enero</option>
+                <option value="febrero">febrero</option>
+                <option value="marzo">marzo</option>
+                <option selected value="abril">abril</option>
+                <option value="mayo">mayo</option>
+                <option value="junio">junio</option>
+                <option value="julio">julio</option>
+                <option value="agosto">agosto</option>
+                <option value="septiembre">septiembre</option>
+                <option value="octubre">octubre</option>
+                <option value="noviembre">noviembre</option>
+                <option value="diciembre">diciembre</option>
+            </select>
+        </div>
+
+        <div class="form-group col-md-2">
+            <label for="dia" class="mini"><small>Día</small></label>
+            <select id="dia" class="form-control">
+                <option selected value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="anio" class="mini"><small>Año</small></label>
+            <select id="anio" class="form-control">
+                <option value="2021">2021</option>
+                <option selected value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+            </select>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Clasificar tweets">
+</form>
+
+<br>
+<div class="container" style="background-color:#F5F8FA">
+    <div class="row">
+        <div class="col">
+            <a class="twitter-timeline" data-width="300" data-height="600"
+                href="https://twitter.com/yuu1_2612/timelines/1349252026480406528?ref_src=twsrc%5Etfw">Ayuda - Curated
+                tweets by yuu1_2612</a>
+        </div>
+        <div class="col">
+            <a class="twitter-timeline" data-width="300" data-height="600"
+                href="https://twitter.com/yuu1_2612/timelines/1349258668521508869?ref_src=twsrc%5Etfw">Quejas - Curated
+                tweets by yuu1_2612</a>
+        </div>
+        <div class="col">
+            <a class="twitter-timeline" data-width="300" data-height="600"
+                href="https://twitter.com/yuu1_2612/timelines/1349258936885653507?ref_src=twsrc%5Etfw">Ofertas - Curated
+                tweets by yuu1_2612</a>
+        </div>
+    </div>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    {% endblock %}

@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Clasificador de Tweets</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'clasificacion/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0 lyric" href="{% url 'index' %}">
+            Covito
+        </a>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'index' %}"><i class="fa fa-sign-language"></i>
+                                Sobre Covito</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'hashtag' %}"><i class="fa fa-hashtag"></i> Clasificación
+                                con hashtags</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'tweet' %}"><i class="fa fa-twitter"></i> Clasificación con
+                                tweet</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div>
+                    {% block body %}
+                    {% endblock %}
+                </div>
+
+            </main>
+        </div>
+    </div>
+   
+</body>
+</html>
