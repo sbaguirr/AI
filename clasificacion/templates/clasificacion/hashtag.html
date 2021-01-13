@@ -170,23 +170,64 @@
 </form>
 
 <br>
-<div class="container" style="background-color:#F5F8FA">
-    <div class="row">
-        <div class="col">
-            <a class="twitter-timeline" data-width="300" data-height="600"
-                href="https://twitter.com/yuu1_2612/timelines/1349252026480406528?ref_src=twsrc%5Etfw">Ayuda - Curated
-                tweets by yuu1_2612</a>
+<br>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <h1 class="h2">Resultados</h1>
+</div>
+<br>
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="ayuda-tab" data-toggle="tab" href="#ayuda" role="tab"
+                        aria-controls="ayuda" aria-selected="true">Pedidos de ayuda</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="quejas-tab" data-toggle="tab" href="#quejas" role="tab"
+                        aria-controls="quejas" aria-selected="false">Quejas</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="ofertas-tab" data-toggle="tab" href="#ofertas" role="tab"
+                        aria-controls="ofertas" aria-selected="false">Ofertas</a>
+                </li>
+            </ul>
         </div>
-        <div class="col">
-            <a class="twitter-timeline" data-width="300" data-height="600"
-                href="https://twitter.com/yuu1_2612/timelines/1349258668521508869?ref_src=twsrc%5Etfw">Quejas - Curated
-                tweets by yuu1_2612</a>
-        </div>
-        <div class="col">
-            <a class="twitter-timeline" data-width="300" data-height="600"
-                href="https://twitter.com/yuu1_2612/timelines/1349258936885653507?ref_src=twsrc%5Etfw">Ofertas - Curated
-                tweets by yuu1_2612</a>
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="ayuda" role="tabpanel" aria-labelledby="ayuda-tab">
+                    <ol>
+                        <li>Darren Shan</li>
+                        <li>Cassandra Clare</li>
+                        <li>Rick Riordan</li>
+                        <li>Oscar Wild</li>
+                    </ol>
+                    <small>Cantidad total de tweets: 4</small>
+                </div>
+                <div class="tab-pane fade" id="quejas" role="tabpanel" aria-labelledby="quejas-tab">
+                    <ol>
+                        <li>Alina Starkov estaba enojada con el oscuro</li>
+                        <li>Poseidón protestó sobre la acusación</li>
+                        <li>Valentine destruyó el submundo</li>
+                    </ol>
+                    <small>Cantidad total de tweets: 3</small>
+                </div>
+
+                <div class="tab-pane fade" id="ofertas" role="tabpanel" aria-labelledby="ofertas-tab">
+                    <ol>
+                        <li>Se le ofreció a Percy buscar el rayo perdido</li>
+                        <li>Camille le ofreció un trato a Alec</li>
+                        <li>Will ofreció su vida a Jem</li>
+                    </ol>
+                    <small>Cantidad total de tweets: 3</small>
+                </div>
+            </div>
         </div>
     </div>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    {% endblock %}
+</div>
+<br>
+
+
+
+{% endblock %}
