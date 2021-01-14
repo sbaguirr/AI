@@ -4,7 +4,7 @@
     <h1 class="h2">Clasificación especificando hashtags</h1>
 </div>
 <br>
-<form  action="{% url 'hashtag' %}" method="post">
+<form action="{% url 'hashtag' %}" method="post">
     {% csrf_token %}
     <div class="row">
         <div class="col">
@@ -27,39 +27,38 @@
     <br>
     <div class="row">
         <div class="col"> <label>Desde</label></div>
-        <div class="col"><label>Hasta</label></div>
     </div>
     <div class="row">
         <!-- Desde-->
         <div class="form-group col-md-2">
             <label for="mesDesde" class="mini"><small>Mes</small></label>
             <select id="mesDesde" class="form-control" name="mesDesde">
-                <option value="enero">enero</option>
-                <option value="febrero">febrero</option>
-                <option selected value="marzo">marzo</option>
-                <option value="abril">abril</option>
-                <option value="mayo">mayo</option>
-                <option value="junio">junio</option>
-                <option value="julio">julio</option>
-                <option value="agosto">agosto</option>
-                <option value="septiembre">septiembre</option>
-                <option value="octubre">octubre</option>
-                <option value="noviembre">noviembre</option>
-                <option value="diciembre">diciembre</option>
+                <option selected value="01">enero</option>
+                <option value="02">febrero</option>
+                <option value="03">marzo</option>
+                <option value="04">abril</option>
+                <option value="05">mayo</option>
+                <option value="06">junio</option>
+                <option value="07">julio</option>
+                <option value="08">agosto</option>
+                <option value="09">septiembre</option>
+                <option value="10">octubre</option>
+                <option value="11">noviembre</option>
+                <option value="12">diciembre</option>
             </select>
         </div>
         <div class="form-group col-md-2">
             <label for="diaDesde" class="mini"><small>Día</small></label>
             <select id="diaDesde" class="form-control" name="diaDesde">
-                <option selected value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
+                <option selected value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
@@ -88,83 +87,11 @@
         <div class="form-group col-md-2">
             <label for="anioDesde" class="mini"><small>Año</small></label>
             <select id="anioDesde" class="form-control" name="anioDesde">
-                <option value="2021">2021</option>
-                <option selected value="2020">2020</option>
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
-                <option value="2017">2017</option>
-                <option value="2016">2016</option>
-                <option value="2015">2015</option>
-            </select>
-        </div>
-        <!-- Hasta-->
-        <div class="form-group col-md-2">
-            <label for="mesHasta" class="mini"><small>Mes</small></label>
-            <select id="mesHasta" class="form-control" name="mesHasta">
-                <option value="enero">enero</option>
-                <option value="febrero">febrero</option>
-                <option value="marzo">marzo</option>
-                <option selected value="abril">abril</option>
-                <option value="mayo">mayo</option>
-                <option value="junio">junio</option>
-                <option value="julio">julio</option>
-                <option value="agosto">agosto</option>
-                <option value="septiembre">septiembre</option>
-                <option value="octubre">octubre</option>
-                <option value="noviembre">noviembre</option>
-                <option value="diciembre">diciembre</option>
+                <option selected value="2021">2021</option>
+                <option value="2020">2020</option>
             </select>
         </div>
 
-        <div class="form-group col-md-2">
-            <label for="diaHasta" class="mini"><small>Día</small></label>
-            <select id="diaHasta" class="form-control" name="diaHasta">
-                <option selected value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-            </select>
-        </div>
-        <div class="form-group col-md-2">
-            <label for="anioHasta" class="mini"><small>Año</small></label>
-            <select id="anioHasta" class="form-control" name="anioHasta">
-                <option value="2021">2021</option>
-                <option selected value="2020">2020</option>
-                <option value="2019">2019</option>
-                <option value="2018">2018</option>
-                <option value="2017">2017</option>
-                <option value="2016">2016</option>
-                <option value="2015">2015</option>
-            </select>
-        </div>
     </div>
     <input type="submit" class="btn btn-primary" value="Clasificar tweets">
 </form>
@@ -192,6 +119,10 @@
                     <a class="nav-link" id="ofertas-tab" data-toggle="tab" href="#ofertas" role="tab"
                         aria-controls="ofertas" aria-selected="false">Ofertas</a>
                 </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="ninguna-tab" data-toggle="tab" href="#ninguna" role="tab"
+                        aria-controls="ninguna" aria-selected="false">Tweets que no pertenecen a ninguna</a>
+                </li>
             </ul>
         </div>
         <div class="card-body">
@@ -201,7 +132,7 @@
                         {% for ayuda in pedidosAyuda %}
                         <li>{{ayuda}}</li>
                         {% empty %}
-                        <small>No hay tweets que pertenezcan a esta categoría</small>
+                        <small>No hay tweets que mostrar</small>
                         {% endfor %}
                     </ol>
                 </div>
@@ -210,7 +141,7 @@
                         {% for queja in quejas %}
                         <li>{{queja}}</li>
                         {% empty %}
-                        <small>No hay tweets que pertenezcan a esta categoría</small>
+                        <small>No hay tweets que mostrar</small>
                         {% endfor %}
                     </ol>
                 </div>
@@ -220,14 +151,35 @@
                         {% for oferta in ofertas %}
                         <li>{{oferta}}</li>
                         {% empty %}
-                        <small>No hay tweets que pertenezcan a esta categoría</small>
+                        <small>No hay tweets que mostrar</small>
                         {% endfor %}
                     </ol>
+                </div>
+
+                <div class="tab-pane fade" id="ninguna" role="tabpanel" aria-labelledby="ninguna-tab">
+                    <div class="container-sm">
+                        <div class="row">
+                            {% for ning in ninguna %}
+                            <div class="col-sm-3">
+                                <blockquote class="twitter-tweet">
+                                    <p lang="es" dir="ltr"><a href="{{ ning }}"></a>
+                                </blockquote>
+                            </div>
+                            {% empty %}
+                            <small>No hay tweets que mostrar</small>
+                            {% endfor %}
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <br>
 
 

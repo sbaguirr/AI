@@ -108,3 +108,19 @@ body {
 .mini{
   color: #B3B3B3;
 }
+
+.tex{
+  margin: 0 auto;
+  max-width: 300px;
+  border: solid 2px #ccc;
+  padding: 12px;
+}
+
+.example {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+.twitter-timeline {
+  width: 100vw !important;
+}

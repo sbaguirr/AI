@@ -1,4 +1,12 @@
 from django.shortcuts import render
+import tweepy
+consumer_key = ''
+consumer_secret = ''
+access_token = ''
+access_token_secret = ''
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 
 
 # Create your views here.
@@ -8,29 +16,20 @@ def index(request):
 
 def hashtag(request):
     if request.method == "POST":
-        hashtag = request.POST["hashtag"]
-        cantidad = request.POST["cantidad"]
-        mesDesde = request.POST["mesDesde"]
-        diaDesde = request.POST["diaDesde"]
-        anioDesde = request.POST["anioDesde"]
-        mesHasta = request.POST["mesHasta"]
-        diaHasta = request.POST["diaHasta"]
-        anioHasta = request.POST["anioHasta"]
+        hasht = request.POST["hashtag"]
+        fecha = request.POST["anioDesde"]+'-'+ request.POST["mesDesde"]+'-'+request.POST["diaDesde"]
         pedidosAyuda = []
         quejas = []
         ofertas = []
-        pedidosAyuda.append(hashtag)
-        pedidosAyuda.append(cantidad)
-        pedidosAyuda.append(mesDesde)
-        quejas.append(diaDesde)
-        quejas.append(anioDesde)
-        ofertas.append(mesHasta)
-        ofertas.append(diaHasta)
-        ofertas.append(anioHasta)
+        ninguna= []
+        cursor = tweepy.Cursor(api.search, tweet_mode="extended", q=hasht, count=100, lang="es", since= fecha)
+        for tweet in cursor.items(int(request.POST["cantidad"])):
+            ninguna.append('https://twitter.com/twitter/statuses/'+str(tweet.id)+'?ref_src=twsrc%5Etfw')
         return render(request, "clasificacion/hashtag.html", {
             "pedidosAyuda": pedidosAyuda,
             "quejas": quejas,
-            "ofertas": ofertas
+            "ofertas": ofertas,
+            "ninguna": ninguna
         })
     else:
         return render(request, "clasificacion/hashtag.html")
