@@ -128,32 +128,50 @@
         <div class="card-body">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="ayuda" role="tabpanel" aria-labelledby="ayuda-tab">
-                    <ol>
-                        {% for ayuda in pedidosAyuda %}
-                        <li>{{ayuda}}</li>
-                        {% empty %}
-                        <small>No hay tweets que mostrar</small>
-                        {% endfor %}
-                    </ol>
+                    <div class="container-sm">
+                        <div class="row">
+                            {% for pedido in pedidosAyuda %}
+                            <div class="col-sm-3">
+                                <blockquote class="twitter-tweet">
+                                    <p lang="es" dir="ltr"><a href="{{ pedido }}"></a>
+                                </blockquote>
+                            </div>
+                            {% empty %}
+                            <small>No hay tweets que mostrar</small>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="quejas" role="tabpanel" aria-labelledby="quejas-tab">
-                    <ol>
-                        {% for queja in quejas %}
-                        <li>{{queja}}</li>
-                        {% empty %}
-                        <small>No hay tweets que mostrar</small>
-                        {% endfor %}
-                    </ol>
+                    <div class="container-sm">
+                        <div class="row">
+                            {% for queja in quejas %}
+                            <div class="col-sm-3">
+                                <blockquote class="twitter-tweet">
+                                    <p lang="es" dir="ltr"><a href="{{ queja }}"></a>
+                                </blockquote>
+                            </div>
+                            {% empty %}
+                            <small>No hay tweets que mostrar</small>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
 
                 <div class="tab-pane fade" id="ofertas" role="tabpanel" aria-labelledby="ofertas-tab">
-                    <ol>
-                        {% for oferta in ofertas %}
-                        <li>{{oferta}}</li>
-                        {% empty %}
-                        <small>No hay tweets que mostrar</small>
-                        {% endfor %}
-                    </ol>
+                    <div class="container-sm">
+                        <div class="row">
+                            {% for oferta in ofertas %}
+                            <div class="col-sm-3">
+                                <blockquote class="twitter-tweet">
+                                    <p lang="es" dir="ltr"><a href="{{ oferta }}"></a>
+                                </blockquote>
+                            </div>
+                            {% empty %}
+                            <small>No hay tweets que mostrar</small>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
 
                 <div class="tab-pane fade" id="ninguna" role="tabpanel" aria-labelledby="ninguna-tab">
