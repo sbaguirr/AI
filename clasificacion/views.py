@@ -31,7 +31,8 @@ def hashtag(request):
             id_str = tweet._json['id_str']
             tweet._json['id_url'] = f'https://twitter.com/twitter/statuses/{id_str}'
             data.append(tweet._json)
-
+        
+        # if (request.POST['model']==='lg' ): #Logistic else:  #Lstm
         prediction = logit_classifier.classify(data)
 
         return render(request, 'clasificacion/hashtag.html', {
