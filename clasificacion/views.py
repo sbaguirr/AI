@@ -3,6 +3,7 @@ from django.shortcuts import render
 import tweepy
 
 from .classifiers.classifier import LogisticRegressionClassifier
+from .classifiers.classifier import LSTMClassifier
 
 
 consumer_key = ''
@@ -15,6 +16,7 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
 logit_classifier = LogisticRegressionClassifier()
+lstm_classifier = LSTMClassifier()
 
 def index(request):
     return render(request, 'clasificacion/index.html')
@@ -32,14 +34,15 @@ def hashtag(request):
             tweet._json['id_url'] = f'https://twitter.com/twitter/statuses/{id_str}'
             data.append(tweet._json)
         
-        # if (request.POST['model']==='lg' ): #Logistic else:  #Lstm
-        prediction = logit_classifier.classify(data)
+        if request.POST['model'] == 'lg' :
+            prediction = logit_classifier.classify(data)
+        else:
+            prediction = lstm_classifier.classify(data)
 
         return render(request, 'clasificacion/hashtag.html', {
-            'pedidosAyuda': prediction.get(1, []),
-            'quejas': prediction.get(2, []),
-            'ofertas': prediction.get(3, []),
-            'ninguna': prediction.get(4, [])
+            'pedidosAyuda': prediction.get(0, []),
+            'ofertas': prediction.get(1, []),
+            'ninguna': prediction.get(2, [])
         })
     else:
         return render(request, 'clasificacion/hashtag.html')
