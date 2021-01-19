@@ -19,8 +19,14 @@ class LogisticRegressionClassifier():
         super().__init__()
 
     def load_model(self):
-        model_path = os.path.join(self.models_dir, 'logit', 'logit_3classes_word2vec_17_01.model')
+        model_path = os.path.join(self.models_dir, 'logit', 'logit_3classes_word2vec_concated_tfidf_reduced_17_01.model')
         self.model = joblib.load(model_path)
+
+        pca_path = os.path.join(self.models_dir, 'logit', 'pca.model')
+        self.pca_model = joblib.load(pca_path)
+
+        tfidf_path = os.path.join(self.models_dir, 'logit', 'tfidf.model')
+        self.tfidf_model = joblib.load(tfidf_path)
 
     def load_wikipedia_embeddings(self):
         path = os.path.join(self.models_dir, 'word_embeddings', 'wikipedia_es_300_sg.bin')
@@ -42,7 +48,8 @@ class LogisticRegressionClassifier():
         if data.shape[0] == 0:
             return dict()
         else:
-            features = represent_tweets(data, self.wikipedia)
+            features = represent_tweets(data, self.wikipedia, self.pca_model, self.tfidf_model)
+            data = data[data.index.isin(features.index)]
             data['label'] = self.model.predict(features)
             return { label: list(tweets.id) for label, tweets in data.groupby('label') }
 
