@@ -33,17 +33,22 @@ def hashtag(request):
             id_str = tweet._json['id_str']
             tweet._json['id_url'] = f'https://twitter.com/twitter/statuses/{id_str}'
             data.append(tweet._json)
-        
+
         if request.POST['model'] == 'lg' :
             prediction = logit_classifier.classify(data)
         else:
             prediction = lstm_classifier.classify(data)
 
-        return render(request, 'clasificacion/hashtag.html', {
-            'pedidosAyuda': prediction.get(0, []),
-            'ofertas': prediction.get(1, []),
-            'ninguna': prediction.get(2, [])
-        })
+        if len(prediction) == 0:
+            context = { 'info': 'No existen tweets que cumplan con los parámetros de búsqueda ingresados.' }
+        else:
+            context = {
+                'resultados': True,
+                'pedidosAyuda': prediction.get(0, []),
+                'ofertas': prediction.get(1, []),
+                'ninguna': prediction.get(2, [])
+            }
+        return render(request, 'clasificacion/hashtag.html', context)
     else:
         return render(request, 'clasificacion/hashtag.html')
 

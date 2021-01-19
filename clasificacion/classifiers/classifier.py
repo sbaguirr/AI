@@ -38,9 +38,13 @@ class LogisticRegressionClassifier():
         data = self.load_data(tweets)
         data.tweet = data.tweet.apply(preprocess)
         data = data[~data.tweet.isna()]
-        features = represent_tweets(data, self.wikipedia)
-        data['label'] = self.model.predict(features)
-        return { label: list(tweets.id) for label, tweets in data.groupby('label') }
+
+        if data.shape[0] == 0:
+            return dict()
+        else:
+            features = represent_tweets(data, self.wikipedia)
+            data['label'] = self.model.predict(features)
+            return { label: list(tweets.id) for label, tweets in data.groupby('label') }
 
 
 class LSTMClassifier():
@@ -68,7 +72,16 @@ class LSTMClassifier():
         data = self.load_data(tweets)
         data.tweet = data.tweet.apply(preprocess)
         data = data[~data.tweet.isna()]
-        predict_sequences = self.tokenizer.texts_to_sequences(data.tweet)
-        predict_padded = pad_sequences(predict_sequences, maxlen=20, padding='post', truncating='post')
-        data['label'] = self.model.predict_classes(predict_padded, batch_size=1)
-        return { label: list(tweets.id) for label, tweets in data.groupby('label') }
+
+        if data.shape[0] == 0:
+            return dict()
+        else:
+            predict_sequences = self.tokenizer.texts_to_sequences(data.tweet)
+            predict_padded = pad_sequences(
+                predict_sequences, 
+                maxlen=20, 
+                padding='post', 
+                truncating='post'
+            )
+            data['label'] = self.model.predict_classes(predict_padded, batch_size=1)
+            return { label: list(tweets.id) for label, tweets in data.groupby('label') }
